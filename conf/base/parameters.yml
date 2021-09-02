@@ -5,20 +5,3 @@ example_test_data_ratio: 0.2
 example_num_train_iter: 10000
 example_learning_rate: 0.01
 
-@register_line_magic
-def reload_kedro(project_path, line=None):
-    """Line magic which reloads all Kedro default variables."""
-    # ...
-    global parameters
-    try:
-        # ...
-        session = KedroSession.create("<your-kedro-project-package-name>", project_path)
-        _activate_session(session)
-        context = session.load_context()
-        parameters = context.params
-        # ...
-        logging.info(
-            "Defined global variable `context`, `session`, `catalog` and `parameters`"
-        )
-    except:
-        pass
